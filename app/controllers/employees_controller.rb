@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class EmployeesController < ApplicationController
+
   def index
     @employees = Employee.all.order(id: :desc).paginate(page: params[:page], per_page: 4)
   end
@@ -6,7 +9,7 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
   end
-  
+
   def new
     @employee = Employee.new
   end
@@ -45,5 +48,5 @@ private
   def employee_params
     params.require(:employee).permit(:name, :active, :department_id)
   end
-  
+
 end
