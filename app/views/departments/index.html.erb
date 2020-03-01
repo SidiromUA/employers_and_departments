@@ -1,1 +1,32 @@
-ky ky ri ky
+<div align='center'><%= link_to 'New department', new_department_path, class: 'btn btn-outline-primary' %></div>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Count of employee</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <% @departments.each do |department| %>
+  <tbody>
+    <tr>
+      <td><%= department.id %></td>
+      <td><h5><%= link_to department.name, department %></h5></td>
+      <td><%= department.employees.count %></td>
+      <td>
+        <%= link_to edit_department_path(department) do %>
+          Edit
+        <% end %>
+        <br>
+        <%= link_to department_path(department), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          Delete
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<div align='center'><%= will_paginate(@department, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %></div>

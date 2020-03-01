@@ -1,0 +1,27 @@
+<center><h3><%= @department.name %></h3></center>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Employees</th>
+      <th scope="col">Active</th>
+    </tr>
+  </thead>
+  <% @department.employees.each do |employee| %>
+  <tbody>
+    <tr>
+      <td><%= link_to employee.name, employee %></td>
+      <td>
+      <% if employee.active == true %>
+      Yes
+      <% else %>
+      No
+      <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<div align="center">
+<a href="<%= departments_path %>" class="btn btn-secondary">Back</a>
+<a href="<%= edit_department_path %>" class="btn btn-secondary">Edit</a>
+</div>

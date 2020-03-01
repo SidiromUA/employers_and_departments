@@ -1,10 +1,14 @@
-<%= form_with scope: :department, url: departments_path, local: true do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
+<h1 class="display-4 is-4">New department</h1>
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= form_with scope: :department, url:  departments_path, local: true do |f| %>
+<form align='center'>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Add', class: 'btn btn-primary' %>
+  <%= link_to 'Back', departments_path, class: 'btn btn-secondary' %>
+  <% end %>
+</form>

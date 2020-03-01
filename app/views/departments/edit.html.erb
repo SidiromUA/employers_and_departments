@@ -1,0 +1,14 @@
+<h1 class="display-4 is-4">Edit departments</h1>
+
+<%= form_with model: @department, local: true do |form| %>
+<form align='center'>
+
+  <div class="form-group">
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+    <%= form.submit 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Back', departments_path, class: 'btn btn-secondary' %>
+  <% end %>
+</form>

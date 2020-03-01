@@ -1,39 +1,40 @@
-<%= link_to 'New employee', new_employee_path %>
+<div align='center'><%= link_to 'New employee', new_employee_path, class: 'btn btn-outline-primary' %></div>
 
-<table>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Active</th>
-        <th>Department</th>
-        <th collspan='2'>Action</th>
-      </tr>
-      <% @employees.each do |employee| %>
-        <tr>
-          <td>
-          <%= employee.id %>
-          </td>
-          <td>
-            <h5><%= link_to employee.name, employee %></h5>
-          </td>
-          <td> 
-            <%= employee.active %>
-          </td>
-          <td>
-            'Department'
-          </td>
-          <td>
-            <%= link_to edit_employee_path(employee) do %>
-            'Edit'
-            <% end %>
-          </td>
-          <td>
-            <%= link_to employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            'Delete'
-            <% end %>
-          </td>
-        </tr>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Active</th>
+      <th scope="col">Department</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <% @employees.each do |employee| %>
+  <tbody>
+    <tr>
+      <td><%= employee.id %></td>
+      <td><h5><%= link_to employee.name, employee %></h5></td>
+      <td>
+      <% if employee.active == true %>
+      Yes
+      <% else %>
+      No
       <% end %>
-    </table>
-    <br>
-    <%= will_paginate @employee %>
+      </td>
+      <td><%= employee.department.name %></td>
+      <td>
+        <%= link_to edit_employee_path(employee) do %>
+          Edit
+        <% end %>
+        <br>
+        <%= link_to employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          Delete
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<div align='center'><%= will_paginate(@employee, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %></div>
