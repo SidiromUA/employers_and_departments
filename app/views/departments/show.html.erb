@@ -6,7 +6,7 @@
       <th scope="col">Active</th>
     </tr>
   </thead> 
-  <% @department.employees.each do |employee| %>
+  <% @employees.each do |employee| %>
   <tbody>
     <tr>
       <td><%= link_to employee.name, employee %></td>
@@ -21,6 +21,7 @@
   </tbody>
   <% end %>
 </table>
+<div align='center'><%= will_paginate(@employees, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %></div>
 <div align="center">
 <a href="<%= departments_path %>" class="btn btn-secondary">Back</a>
 <% if user_signed_in? %>

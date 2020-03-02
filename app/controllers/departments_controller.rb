@@ -7,6 +7,7 @@ class DepartmentsController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
+    @employees  = @department.employees.paginate(page: params[:page], per_page: 4)
   end
 
   def new
