@@ -21,7 +21,7 @@ end
   Employee.create(name: "Name Random ##{i}", active: true, department_id: department_second.id)
 end
 
-10.times do |i|
+4.times do |i|
   Employee.create(name: "Name Random ##{i}", active: true, department_id: department_third.id)
 end
 
@@ -29,7 +29,7 @@ end
   Employee.create(name: "Name Random ##{i}", active: true, department_id: department_fourth.id)
 end
 
-8.times do |i|
+3.times do |i|
   Employee.create(name: "Name Random ##{i}", active: true, department_id: department_fifth.id)
 end
 
