@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DepartmentsController < ApplicationController
-
   def index
     @departments = Department.all.order(id: :desc).paginate(page: params[:page], per_page: 4)
   end
@@ -30,23 +29,23 @@ class DepartmentsController < ApplicationController
 
   def update
     @department = Department.find(params[:id])
-      if @department.update(department_params)
-        redirect_to @department
-      else
-        render 'edit'
-      end
+    if @department.update(department_params)
+      redirect_to @department
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @department = Department.find(params[:id])
     @department.destroy
-  
+
     redirect_to departments_path
   end
 
-private
+  private
+
   def department_params
     params.require(:department).permit(:name)
   end
-
 end
