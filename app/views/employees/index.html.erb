@@ -1,4 +1,11 @@
-<div align='center'><%= link_to 'New employee', new_employee_path, class: 'btn btn-outline-primary' %></div>
+<% if user_signed_in? %>
+<div align='center'>
+  <%= link_to 'New employee', new_employee_path, class: 'btn btn-outline-primary' %>
+</div>
+<% else %>
+<center><%= link_to 'Please, sign in', new_user_session_path, class: 'btn btn-danger' %></center>
+<% end %>
+
 
 <table class="table">
   <thead class="thead-light">
@@ -7,7 +14,7 @@
       <th scope="col">Name</th>
       <th scope="col">Active</th>
       <th scope="col">Department</th>
-      <th scope="col">Action</th>
+      <% if user_signed_in? %><th scope="col">Action</th><% end %>
     </tr>
   </thead>
   <% @employees.each do |employee| %>
@@ -23,6 +30,7 @@
       <% end %>
       </td>
       <td><%= employee.department.name %></td>
+      <% if user_signed_in? %>
       <td>
         <%= link_to edit_employee_path(employee) do %>
           Edit
@@ -32,6 +40,7 @@
           Delete
         <% end %>
       </td>
+      <% end %>
     </tr>
   </tbody>
   <% end %>

@@ -6,6 +6,8 @@
     <h5 class="card-title">Active: <%= @employee.active %></h5>
     <h5 class="card-text">Department: <%= @employee.department.name %></h5>
     <a href="<%= employees_path %>" class="btn btn-secondary">Back</a>
+    <% if user_signed_in? %>
     <a href="<%= edit_employee_path %>" class="btn btn-secondary">Edit</a>
+    <% end %>
   </div>
 </div>

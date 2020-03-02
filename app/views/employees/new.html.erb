@@ -1,6 +1,7 @@
+<% if user_signed_in? %>
 <div class='container'>
 <h1 class="display-4 is-4">New employee</h1>
-<%= form_with scope: :employee, url:  employees_path, local: true do |f| %>
+<%= form_with scope: :employee, url: employees_path, local: true do |f| %>
 
 <div class="form-group">
   <%= f.label :name %>
@@ -23,3 +24,6 @@
   <% end %>
 </div>
 </div>
+<% else %>
+<center><%= link_to 'Please, sign in', new_user_session_path, class: 'btn btn-danger' %></center>
+<% end %>

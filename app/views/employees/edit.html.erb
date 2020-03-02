@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <div class='container'>
 <h1 class="display-4 is-4">Edit Employee</h1>
 <%= form_with model: @employee, local: true do |form| %>
@@ -23,3 +24,6 @@
   <% end %>
 </div>
 </div>
+<% else %>
+<center><%= link_to 'Please, sign in', new_user_session_path, class: 'btn btn-danger' %></center>
+<% end %>

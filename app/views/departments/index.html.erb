@@ -1,4 +1,10 @@
-<div align='center'><%= link_to 'New department', new_department_path, class: 'btn btn-outline-primary' %></div>
+<% if user_signed_in? %>
+<div align='center'>
+    <%= link_to 'New department', new_department_path, class: 'btn btn-outline-primary' %>
+</div>
+<% else %>
+<center><%= link_to 'Please, sign in', new_user_session_path, class: 'btn btn-danger' %></center>
+<% end %>
 
 <table class="table">
   <thead class="thead-light">
@@ -6,15 +12,20 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Count of employee</th>
-      <th scope="col">Action</th>
+      <% if user_signed_in? %><th scope="col">Action</th><% end %>
     </tr>
   </thead>
   <% @departments.each do |department| %>
   <tbody>
     <tr>
       <td><%= department.id %></td>
+      <% if user_signed_in? %>
       <td><h5><%= link_to department.name, department %></h5></td>
+      <% else %>
+      <td><%= department.name %></td>
+      <% end %>
       <td><%= department.employees.count %></td>
+      <% if user_signed_in? %>
       <td>
         <%= link_to edit_department_path(department) do %>
           Edit
@@ -24,6 +35,7 @@
           Delete
         <% end %>
       </td>
+      <% end %>
     </tr>
   </tbody>
   <% end %>

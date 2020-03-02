@@ -26,6 +26,8 @@ gem 'bootstrap', '~> 4.4.1'
 # gem 'bootstrap-sass', '~> 3.4.1'
 # gem 'sassc-rails', '>= 2.1.0'
 gem 'react-rails', '~> 1.0'
+# Use 'devise' to authentication users
+gem 'devise', '~> 4.7', '>= 4.7.1' 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

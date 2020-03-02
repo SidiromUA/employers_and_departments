@@ -23,5 +23,7 @@
 </table>
 <div align="center">
 <a href="<%= departments_path %>" class="btn btn-secondary">Back</a>
+<% if user_signed_in? %>
 <a href="<%= edit_department_path %>" class="btn btn-secondary">Edit</a>
+<% end %>
 </div>
